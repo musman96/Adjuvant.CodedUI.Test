@@ -23,7 +23,7 @@ namespace Adjuvant.CodedUI.Test.Tests.Login
 
         private readonly string username;
         private readonly string password;
-
+        private bool Logged { get; set; }
         public LoginTest()
         {
             //TODO: move to base class constructor
@@ -55,13 +55,32 @@ namespace Adjuvant.CodedUI.Test.Tests.Login
             login.LoginUser(username, password, bw);
 
             //Get output from user interface
-            bw.
-
+            //Get output from user interface
+            bool loggedIn = bw.Title.Contains("| Select Security Scope");
+            
             //Assert that output is as expected
-            Assert.AreEqual("johan@rmms.co.za", username, "username is invalid");
-            Assert.AreEqual("Fgx1234!", password, "password is invalid");
+            Assert.IsTrue(loggedIn, "Login With Correct Details successful");
+
             
            
+        }
+
+        [TestMethod]
+        public void LogInWithIncorrectDetails()
+        {
+            //Setup our browser for the test
+            AccessBrowser();
+
+            //Perform test actions using Automation
+            var login = new Automation.Login.Login();
+            login.LoginUser(username, password, bw);
+
+            //Get output from user interface
+            bool loggedIn = bw.Title.Contains("| Log in");
+      
+           
+            //Assert that output is as expected
+            Assert.IsTrue(loggedIn, "logIn With Incorrect Details unsuccesful");
         }
     }
 }
