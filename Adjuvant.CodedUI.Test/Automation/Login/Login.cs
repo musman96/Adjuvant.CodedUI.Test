@@ -12,9 +12,13 @@ namespace Adjuvant.CodedUI.Test.Automation.Login
 {
     public class Login
     {
-        public void LoginWithCorrectDetails(string user,string pass, BrowserWindow bw)
+        public Login()
         {
-            BrowserWindow.CurrentBrowser = "chrome";
+
+        }
+        public void LoginUser(string user,string pass, BrowserWindow bw)
+        {
+           
             HtmlEdit txtUsername = new HtmlEdit(bw);
             HtmlEdit txtPassword = new HtmlEdit(bw);
             HtmlButton btnLogin = new HtmlButton(bw);

@@ -57,7 +57,7 @@
     <Compile Include="Automation\Login\Login.cs" />
     <Compile Include="CodedUITest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tests\Login\Login.cs" />
+    <Compile Include="Tests\Login\LoginTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

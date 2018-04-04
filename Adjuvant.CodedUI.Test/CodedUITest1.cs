@@ -31,8 +31,8 @@ namespace Adjuvant.CodedUI.Test
         [TestMethod]
         public void CodedUITestMethod1()
         {
-            Login login = new Login(bw);
-            login.LogInWithCorrectDetails("johan@rmms.co.za", "Fgx1234!");
+            //LoginTest login = new LoginTest(bw, "johan@rmms.co.za", "Fgx1234!");
+            //login.LogInWithCorrectDetails();
         }
 
                    
