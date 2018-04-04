@@ -12,6 +12,7 @@ using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 using Adjuvant.CodedUI.Test.Automation.Login;
 namespace Adjuvant.CodedUI.Test.Tests.Login
 {
+    [CodedUITest]
     public class Login
     {
         BrowserWindow bw;
@@ -22,12 +23,13 @@ namespace Adjuvant.CodedUI.Test.Tests.Login
         }
 
         [TestMethod]
-        public void LogInWithCorrectDetails(string user, string pass, BrowserWindow br)
+        public void LogInWithCorrectDetails(string user, string pass)
         {
             string web = ConfigurationManager.AppSettings.Get("website");
-            Adjuvant.CodedUI.Test.Automation.Login.Login login = new Automation.Login.Login();
-            login.LoginWithCorrectDetails(user,pass,br);
-            Assert();
+            Automation.Login.Login login = new Automation.Login.Login();
+            login.LoginWithCorrectDetails(user, pass, bw);
+            Assert.AreEqual("johan@rmms.co.za",user,"username is invalid");
+            Assert.AreEqual("Fgx1234!", pass, "password is invalid");
         }
     }
 }

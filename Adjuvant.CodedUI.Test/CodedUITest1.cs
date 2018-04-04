@@ -4,12 +4,13 @@ using System.Text.RegularExpressions;
 using System.Windows.Input;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Configuration;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.VisualStudio.TestTools.UITest.Extension;
 using Keyboard = Microsoft.VisualStudio.TestTools.UITesting.Keyboard;
 using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
-
+using Adjuvant.CodedUI.Test.Tests.Login;
 namespace Adjuvant.CodedUI.Test
 {
     /// <summary>
@@ -19,22 +20,25 @@ namespace Adjuvant.CodedUI.Test
     public class CodedUITest1
     {
 
-        static BrowserWindow bw;
+        static string web = ConfigurationManager.AppSettings.Get("website");
+        static BrowserWindow bw = BrowserWindow.Launch(new Uri(web));
         //private var bw = BrowserWindow.Launch();
         public CodedUITest1()
         {
+
         }
 
         [TestMethod]
         public void CodedUITestMethod1()
         {
-            // To generate code for this test, select "Generate Code for Coded UI Test" from the shortcut menu and select one of the menu items.
+            Login login = new Login(bw);
+            login.LogInWithCorrectDetails("johan@rmms.co.za", "Fgx1234!");
         }
 
                    
         
         [TestMethod]
-        public void Login()
+        public void Login1()
         {
             BrowserWindow.CurrentBrowser = "chrome";
             bw = BrowserWindow.Launch(new Uri("https://localhost:44323/")); ;
@@ -57,7 +61,7 @@ namespace Adjuvant.CodedUI.Test
         [TestMethod]
         public void SelectBusinessPartner()
         {
-           Login();
+           Login1();
             HtmlComboBox lstBusinessPartner = new HtmlComboBox(bw);
             HtmlComboBox lstLocation = new HtmlComboBox(bw);
             HtmlButton btnFinish = new HtmlButton(bw);
